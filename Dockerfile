@@ -6,7 +6,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
 RUN apk update && \
     apk add --no-cache git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/* $HOME/.cache
-RUN git clone https://gitee.com/yllan/ferry_web.git
+RUN git clone https://gitee.com/amethystlilj/ferry_web.git
 
 WORKDIR ferry_web
 
@@ -43,6 +43,7 @@ COPY config/ /opt/workflow/ferry/default_config/
 COPY template/ /opt/workflow/ferry/template/
 COPY docker/entrypoint.sh /opt/workflow/ferry/
 RUN mkdir -p logs static/uploadfile static/scripts static/template
+COPY static/template/email.html /opt/workflow/ferry/static/template
 
 RUN chmod 755 /opt/workflow/ferry/entrypoint.sh
 RUN chmod 755 /opt/workflow/ferry/ferry
