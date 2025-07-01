@@ -18,9 +18,10 @@ func AuthInit() (*jwt.GinJWTMiddleware, error) {
 		Authenticator:   handler.Authenticator,
 		Authorizator:    handler.Authorizator,
 		Unauthorized:    handler.Unauthorized,
-		TokenLookup:     "header: Authorization, query: token, cookie: jwt",
+		TokenLookup:     "header: Authorization, query: token, cookie: Admin-Token",
 		TokenHeadName:   "Bearer",
 		TimeFunc:        time.Now,
+		SendCookie:      false,
 	})
 
 }
